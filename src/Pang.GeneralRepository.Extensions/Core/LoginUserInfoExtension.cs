@@ -50,7 +50,7 @@ namespace Pang.GeneralRepository.Extensions.Core
             app.UseSession();
             var httpContextAccessor =
                 app.ApplicationServices.GetRequiredService<IHttpContextAccessor>();
-            LoginUserInfo<T>.Configure(httpContextAccessor);
+            LoginUserInfo.Configure(httpContextAccessor);
 
             return app;
         }
