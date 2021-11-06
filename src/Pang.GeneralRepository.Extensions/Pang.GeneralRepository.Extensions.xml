@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pang.GeneralRepository.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension">
+            <summary>
+            用户登录信息扩展
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension.AddLoginUserInfo(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加用户登录信息服务
+            </summary>
+            <param name="services"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension.UseLoginUserInfo(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            使用Session存储用户登录信息
+            </summary>
+            <param name="app"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension.UseLoginUserInfo``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            使用Session存储用户登录信息
+            </summary>
+            <param name="app"> </param>
+            <returns> </returns>
+        </member>
+    </members>
+</doc>

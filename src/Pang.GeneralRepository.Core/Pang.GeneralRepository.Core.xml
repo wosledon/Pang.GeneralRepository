@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pang.GeneralRepository.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Pang.GeneralRepository.Core.Core.LoginUserInfo`1">
+            <summary>
+            登录信息
+            </summary>
+            <typeparam name="T"> </typeparam>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo`1.Configure(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            </summary>
+            <param name="httpContextAccessor"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo`1.Get">
+            <summary>
+            获取登录信息
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo`1.Set(Pang.GeneralRepository.Core.Entity.EntityBase{`0})">
+            <summary>
+            设置登录信息
+            </summary>
+            <param name="userInfo"> </param>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Core.LoginUserInfo">
+            <summary>
+            登录信息(默认)
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo.Configure(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            </summary>
+            <param name="httpContextAccessor"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo.Get``1">
+            <summary>
+            获取身份信息
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo.Set(Pang.GeneralRepository.Core.Entity.EntityBase)">
+            <summary>
+            设置身份信息
+            </summary>
+            <param name="userInfo"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo.Set``1(Pang.GeneralRepository.Core.Entity.EntityBase{``0})">
+            <summary>
+            设置身份信息
+            </summary>
+            <typeparam name="T"> </typeparam>
+            <param name="userInfo"> </param>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Entity.EntityBase">
+            <summary>
+            实体类基类(默认)
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase.CreateUserId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase.ModifyUserId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase.EnableMark">
+            <summary>
+            启用标识
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase.DeleteMark">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Entity.EntityBase.Create">
+            <summary>
+            创建实体
+            <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Entity.EntityBase.Modify">
+            <summary>
+            修改实体
+            <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
+            </summary>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Entity.EntityBase`1">
+            <summary>
+            实体类基类
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase`1.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase`1.CreateUserId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase`1.ModifyUserId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase`1.EnableMark">
+            <summary>
+            启用标识
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.EntityBase`1.DeleteMark">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Entity.EntityBase`1.Create">
+            <summary>
+            创建实体
+            <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Entity.EntityBase`1.Modify">
+            <summary>
+            修改实体
+            <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
+            </summary>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Entity.IEntityBase`1">
+            <summary>
+            实体类基类
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.IEntityBase`1.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.IEntityBase`1.CreateUserId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.IEntityBase`1.ModifyUserId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.IEntityBase`1.EnableMark">
+            <summary>
+            启用标识
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Entity.IEntityBase`1.DeleteMark">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Entity.IEntityBase`1.Create">
+            <summary>
+            创建实体
+            <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Entity.IEntityBase`1.Modify">
+            <summary>
+            修改实体
+            <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
+            </summary>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Extensions.JsonExtension">
+            <summary>
+            Json扩展
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Extensions.JsonExtension.ToObject``1(System.String)">
+            <summary>
+            将Json字符串转为对象
+            </summary>
+            <typeparam name="T"> </typeparam>
+            <param name="json"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Extensions.JsonExtension.ToJson(System.Object)">
+            <summary>
+            将对象转为Json字符串
+            </summary>
+            <param name="obj"> </param>
+            <returns> </returns>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1">
+            <summary>
+            通用仓储接口
+            </summary>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Repository.RepositoryBase">
+            <summary>
+            通用仓储基类
+            </summary>
+        </member>
+    </members>
+</doc>
