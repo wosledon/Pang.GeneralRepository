@@ -17,8 +17,8 @@ namespace Pang.GeneralRepository.Core.Extensions
         /// <returns> </returns>
         public static ModelBuilder AddEntityTypes(this ModelBuilder modelBuilder)
         {
-            var types = typeof(EntityBase<>).Assembly.GetTypes().AsEnumerable();
-            var entityTypes = types.Where(t => !t.IsAbstract && !t.IsInterface && t.IsSubclassOf(typeof(EntityBase<>)));
+            var types = typeof(EntityBase).Assembly.GetTypes().AsEnumerable();
+            var entityTypes = types.Where(t => !t.IsAbstract && !t.IsInterface && t.IsSubclassOf(typeof(EntityBase)));
 
             foreach (var type in entityTypes)
             {

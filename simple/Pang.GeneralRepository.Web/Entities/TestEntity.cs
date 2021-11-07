@@ -4,7 +4,7 @@ using Pang.GeneralRepository.Core.Entity;
 
 namespace Pang.GeneralRepository.Web.Entities
 {
-    public class TestEntity : EntityBase<int>
+    public class TestEntityBase : EntityBase<int>
     {
         public override void Create()
         {

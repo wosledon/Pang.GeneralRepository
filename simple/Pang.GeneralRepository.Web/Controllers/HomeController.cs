@@ -45,7 +45,7 @@ namespace Pang.GeneralRepository.Web.Controllers
         [HttpGet]
         public ActionResult Set()
         {
-            var test = new TestEntity()
+            var test = new TestEntityBase()
             {
                 Id = 1
             };
@@ -57,7 +57,7 @@ namespace Pang.GeneralRepository.Web.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            var info = LoginUserInfo.Get<TestEntity>();
+            var info = LoginUserInfo.Get<TestEntityBase>();
             return Ok(info);
         }
 
