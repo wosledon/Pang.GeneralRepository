@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
 using Pang.GeneralRepository.Core.Helper;
 
@@ -16,7 +17,7 @@ namespace Pang.GeneralRepository.Core.Repository
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        public static DbContext DbContext { get; set; }
+        public static GRCDbContext DbContext { get; set; }
 
         /// <summary>
         /// 配置通用仓储
@@ -25,7 +26,7 @@ namespace Pang.GeneralRepository.Core.Repository
         /// <param name="context"> </param>
         //void Configure<TDbContext>(TDbContext context) where TDbContext : DbContext;
 
-        public void Configure<TDbContext>(TDbContext context) where TDbContext : DbContext
+        public void Configure<TDbContext>(TDbContext context) where TDbContext : GRCDbContext
         {
             DbContext = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -34,7 +35,7 @@ namespace Pang.GeneralRepository.Core.Repository
         /// 获取数据库上下文
         /// </summary>
         /// <returns> </returns>
-        public static DbContext GetDbContext()
+        public static GRCDbContext GetDbContext()
         {
             return DbContext;
         }
@@ -52,7 +53,7 @@ namespace Pang.GeneralRepository.Core.Repository
 
         /// <summary>
         /// </summary>
-        new DbContext DbContext => IRepositoryBase.GetDbContext();
+        new GRCDbContext DbContext => IRepositoryBase.GetDbContext();
 
         /// <summary>
         /// 插入数据

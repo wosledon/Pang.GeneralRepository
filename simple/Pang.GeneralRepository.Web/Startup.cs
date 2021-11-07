@@ -46,7 +46,7 @@ namespace Pang.GeneralRepository.Web
             }
             app.UseStaticFiles();
             app.UseLoginUserInfo();
-            app.UseGRCMiddleware<DbContext>();
+            app.UseGRCMiddleware<GRCDbContext>();
 
             app.UseRouting();
 

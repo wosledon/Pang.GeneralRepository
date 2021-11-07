@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
 using Pang.GeneralRepository.Core.Helper;
 
@@ -21,12 +22,12 @@ namespace Pang.GeneralRepository.Core.Repository
 
         /// <summary>
         /// </summary>
-        public DbContext DbContext { protected get; set; } = IRepositoryBase.DbContext;
+        public GRCDbContext DbContext { protected get; set; } = IRepositoryBase.DbContext;
 
         /// <summary>
         /// </summary>
         /// <param name="context"> </param>
-        public void Configure<TDbContext>(TDbContext context) where TDbContext : DbContext
+        public void Configure<TDbContext>(TDbContext context) where TDbContext : GRCDbContext
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
         }

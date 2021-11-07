@@ -38,27 +38,6 @@ namespace Pang.GeneralRepository.Extensions.Core
         }
 
         /// <summary>
-        /// 批量将实体对象配置到数据库上下文中
-        /// </summary>
-        /// <param name="modelBuilder"> </param>
-        /// <returns> </returns>
-        public static ModelBuilder AddEntityTypes(this ModelBuilder modelBuilder)
-        {
-            var types = typeof(EntityBase).Assembly.GetTypes().AsEnumerable();
-            var entityTypes = types.Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(EntityBase<>)));
-
-            foreach (var type in entityTypes)
-            {
-                if (modelBuilder.Model.FindEntityType(type) is null)
-                {
-                    modelBuilder.Model.AddEntityType(type);
-                }
-            }
-
-            return modelBuilder;
-        }
-
-        /// <summary>
         /// 启用通用仓储中间件
         /// </summary>
         /// <typeparam name="TDbContext"> 数据库上下文 </typeparam>
@@ -70,7 +49,7 @@ namespace Pang.GeneralRepository.Extensions.Core
             var repos = app.ApplicationServices.GetService(typeof(IRepositoryBase<>)) as IRepositoryBase;
             var dbContext = app.ApplicationServices.GetService(typeof(TDbContext)) as TDbContext;
 
-            repos.Configure(dbContext);
+            repos?.Configure(dbContext);
 
             return app;
         }
