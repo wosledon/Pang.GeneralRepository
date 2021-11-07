@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Pang.GeneralRepository.Core\Pang.GeneralRepository.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RepositoryExtensions\" />
+  </ItemGroup>
+
 </Project>

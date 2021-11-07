@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +58,10 @@ namespace Pang.GeneralRepository.Core.Repository
         new GRCDbContext DbContext => IRepositoryBase.GetDbContext();
 
         /// <summary>
+        /// </summary>
+        IQueryable<T> Queryable { get; }
+
+        /// <summary>
         /// 插入数据
         /// </summary>
         /// <param name="entity"> </param>
@@ -74,6 +80,14 @@ namespace Pang.GeneralRepository.Core.Repository
         /// </summary>
         /// <returns> </returns>
         Task<T> FindAsync(Expression<Func<T, bool>> query);
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <param name="expression"> </param>
+        /// <param name="include">    </param>
+        /// <returns> </returns>
+        Task<T> FindAsync<TModel>(Expression<Func<T, bool>> expression, Expression<Func<T, ICollection<TModel>>> include);
 
         /// <summary>
         /// 查询数据
@@ -159,6 +173,10 @@ namespace Pang.GeneralRepository.Core.Repository
         TDbContext DbContext { get; }
 
         /// <summary>
+        /// </summary>
+        IQueryable<T> Queryable { get; }
+
+        /// <summary>
         /// 插入数据
         /// </summary>
         /// <param name="entity"> </param>
@@ -177,6 +195,14 @@ namespace Pang.GeneralRepository.Core.Repository
         /// </summary>
         /// <returns> </returns>
         Task<T> FindAsync(Expression<Func<T, bool>> query);
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <param name="expression"> </param>
+        /// <param name="include">    </param>
+        /// <returns> </returns>
+        Task<T> FindAsync<TModel>(Expression<Func<T, bool>> expression, Expression<Func<T, ICollection<TModel>>> include);
 
         /// <summary>
         /// 查询数据

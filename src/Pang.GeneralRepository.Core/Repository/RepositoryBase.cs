@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Pang.GeneralRepository.Core.Repository
     /// <summary>
     /// 通用仓储基类
     /// </summary>
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : EntityBase
     {
         /// <summary>
         /// </summary>
@@ -26,12 +27,17 @@ namespace Pang.GeneralRepository.Core.Repository
 
         /// <summary>
         /// </summary>
+        public IQueryable<T> Queryable { get; private set; }
+
+        /// <summary>
+        /// </summary>
         /// <param name="context"> </param>
         public void Configure<TDbContext>(TDbContext context) where TDbContext : GRCDbContext
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
             DbContext = context;
             DbSet = context.Set<T>();
+            Queryable = DbSet.AsQueryable();
         }
 
         /// <summary>
@@ -73,8 +79,36 @@ namespace Pang.GeneralRepository.Core.Repository
         public async Task<T> FindAsync(Expression<Func<T, bool>> query)
         {
             if (query == null) throw new ArgumentNullException(nameof(query));
+            //return await DbSet.Where(query).FirstOrDefaultAsync();
+            return await DbSet.AsQueryable().Where(query)
+                .Include(x => x).FirstOrDefaultAsync();
+        }
 
-            return await DbSet.Where(query).FirstOrDefaultAsync();
+        /// <summary>
+        /// 查找数据
+        /// </summary>
+        /// <param name="exp">   </param>
+        /// <param name="query"> </param>
+        /// <returns> </returns>
+        public async Task<T> FindAsync<TModel>(Expression<Func<T, bool>> exp, Expression<Func<T, ICollection<TModel>>> query)
+        {
+            if (query == null) throw new ArgumentNullException(nameof(query));
+            DbSet.AsQueryable().Include(query);
+            //return await DbSet.Where(query).FirstOrDefaultAsync();
+            return await DbSet.AsQueryable().Include(query).Where(exp).FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// 查找数据
+        /// </summary>
+        /// <param name="query"> </param>
+        /// <returns> </returns>
+        public async Task<T> FindAsync(IQueryable<T> query)
+        {
+            if (query == null) throw new ArgumentNullException(nameof(query));
+
+            //return await DbSet.Where(query).FirstOrDefaultAsync();
+            return await DbSet.AsQueryable().Where(x => true).Concat(query).FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -222,6 +256,10 @@ namespace Pang.GeneralRepository.Core.Repository
 
         /// <summary>
         /// </summary>
+        public IQueryable<T> Queryable { get; private set; }
+
+        /// <summary>
+        /// </summary>
         /// <param name="context"> </param>
 #pragma warning disable 693
 
@@ -231,6 +269,7 @@ namespace Pang.GeneralRepository.Core.Repository
             if (context == null) throw new ArgumentNullException(nameof(context));
             DbContext = context;
             DbSet = context.Set<T>();
+            Queryable = DbSet.AsQueryable();
         }
 
         /// <summary>
@@ -274,6 +313,20 @@ namespace Pang.GeneralRepository.Core.Repository
             if (query == null) throw new ArgumentNullException(nameof(query));
 
             return await DbSet.Where(query).FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// 查找数据
+        /// </summary>
+        /// <param name="exp">   </param>
+        /// <param name="query"> </param>
+        /// <returns> </returns>
+        public async Task<T> FindAsync<TModel>(Expression<Func<T, bool>> exp, Expression<Func<T, ICollection<TModel>>> query)
+        {
+            if (query == null) throw new ArgumentNullException(nameof(query));
+            DbSet.AsQueryable().Include(query);
+            //return await DbSet.Where(query).FirstOrDefaultAsync();
+            return await DbSet.AsQueryable().Include(query).Where(exp).FirstOrDefaultAsync();
         }
 
         /// <summary>

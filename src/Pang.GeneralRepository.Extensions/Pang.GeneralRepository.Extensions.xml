@@ -78,5 +78,10 @@
             <param name="app"> </param>
             <returns> </returns>
         </member>
+        <member name="T:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension">
+            <summary>
+            仓储的扩展方法
+            </summary>
+        </member>
     </members>
 </doc>

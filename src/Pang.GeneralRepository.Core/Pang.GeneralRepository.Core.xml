@@ -368,6 +368,10 @@
             <summary>
             </summary>
         </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.Queryable">
+            <summary>
+            </summary>
+        </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.InsertAsync(`0)">
             <summary>
             插入数据
@@ -386,6 +390,14 @@
             <summary>
             查询数据
             </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}})">
+            <summary>
+            查询数据
+            </summary>
+            <param name="expression"> </param>
+            <param name="include">    </param>
             <returns> </returns>
         </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
@@ -470,6 +482,10 @@
             <summary>
             </summary>
         </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.Queryable">
+            <summary>
+            </summary>
+        </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.InsertAsync(`0)">
             <summary>
             插入数据
@@ -488,6 +504,14 @@
             <summary>
             查询数据
             </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}})">
+            <summary>
+            查询数据
+            </summary>
+            <param name="expression"> </param>
+            <param name="include">    </param>
             <returns> </returns>
         </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
@@ -570,6 +594,10 @@
             <summary>
             </summary>
         </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.Queryable">
+            <summary>
+            </summary>
+        </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.Configure``1(``0)">
             <summary>
             </summary>
@@ -595,6 +623,21 @@
             <returns> </returns>
         </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="exp">   </param>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindAsync(System.Linq.IQueryable{`0})">
             <summary>
             查找数据
             </summary>
@@ -689,6 +732,10 @@
             <summary>
             </summary>
         </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.Queryable">
+            <summary>
+            </summary>
+        </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.Configure(`1)">
             <summary>
             </summary>
@@ -717,6 +764,14 @@
             <summary>
             查找数据
             </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.FindAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Collections.Generic.ICollection{``0}}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="exp">   </param>
             <param name="query"> </param>
             <returns> </returns>
         </member>
