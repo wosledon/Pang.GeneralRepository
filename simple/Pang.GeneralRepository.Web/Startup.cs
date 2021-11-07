@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Extensions.Core;
+using Pang.GeneralRepository.Web.Data;
 using Pang.GeneralRepository.Web.Entities;
 
 namespace Pang.GeneralRepository.Web
@@ -31,6 +32,11 @@ namespace Pang.GeneralRepository.Web
             services.AddLoginUserInfo();
 
             services.AddAutoMapper();
+            services.AddGeneralRepository<SimpleDbContext>();
+            services.AddDbContext<SimpleDbContext>(option =>
+            {
+                option.UseSqlite("Data Source=simple.db");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +52,8 @@ namespace Pang.GeneralRepository.Web
             }
             app.UseStaticFiles();
             app.UseLoginUserInfo();
-            app.UseGRCMiddleware<GRCDbContext>();
+
+            //app.UseGRCMiddleware<SimpleDbContext>();
 
             app.UseRouting();
 

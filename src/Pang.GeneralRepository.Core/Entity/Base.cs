@@ -2,7 +2,7 @@ namespace Pang.GeneralRepository.Core.Entity
 {
     /// <summary>
     /// </summary>
-    public interface IBase
+    public abstract class Base
     {
     }
 }

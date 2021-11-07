@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
+using Pang.GeneralRepository.Core.Repository;
+using Pang.GeneralRepository.Web.Data;
 using Pang.GeneralRepository.Web.Entities;
 
 namespace Pang.GeneralRepository.Web.Controllers
@@ -15,10 +17,13 @@ namespace Pang.GeneralRepository.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IRepositoryBase<User, SimpleDbContext> _userRepositoryBase;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            IRepositoryBase<User, SimpleDbContext> userRepositoryBase)
         {
             _logger = logger;
+            _userRepositoryBase = userRepositoryBase ?? throw new ArgumentNullException(nameof(userRepositoryBase));
         }
 
         public IActionResult Index()
@@ -54,6 +59,21 @@ namespace Pang.GeneralRepository.Web.Controllers
         {
             var info = LoginUserInfo.Get<TestEntity>();
             return Ok(info);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Create()
+        {
+            var user = new User();
+            user.Create();
+
+            await _userRepositoryBase.InsertAsync(user);
+            var res = await _userRepositoryBase.SaveChangesAsync();
+            return Ok(new
+            {
+                Result = res,
+                Data = user
+            });
         }
     }
 }

@@ -4,28 +4,20 @@
         <name>Pang.GeneralRepository.Core</name>
     </assembly>
     <members>
-        <member name="T:Pang.GeneralRepository.Core.Core.LoginUserInfo`1">
+        <member name="T:Pang.GeneralRepository.Core.Core.GRCDbContext">
             <summary>
-            登录信息
+            数据库上下文
             </summary>
-            <typeparam name="T"> </typeparam>
         </member>
-        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo`1.Configure(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+        <member name="M:Pang.GeneralRepository.Core.Core.GRCDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
             <summary>
             </summary>
-            <param name="httpContextAccessor"> </param>
+            <param name="options"> </param>
         </member>
-        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo`1.Get">
+        <member name="M:Pang.GeneralRepository.Core.Core.GRCDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
-            获取登录信息
             </summary>
-            <returns> </returns>
-        </member>
-        <member name="M:Pang.GeneralRepository.Core.Core.LoginUserInfo`1.Set(Pang.GeneralRepository.Core.Entity.EntityBase{`0})">
-            <summary>
-            设置登录信息
-            </summary>
-            <param name="userInfo"> </param>
+            <param name="modelBuilder"> </param>
         </member>
         <member name="T:Pang.GeneralRepository.Core.Core.LoginUserInfo">
             <summary>
@@ -55,6 +47,10 @@
             </summary>
             <typeparam name="T"> </typeparam>
             <param name="userInfo"> </param>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Entity.Base">
+            <summary>
+            </summary>
         </member>
         <member name="T:Pang.GeneralRepository.Core.Entity.EntityBase">
             <summary>
@@ -182,6 +178,25 @@
             <para> 自动设置一些实体信息,如Id, 创建人Id等 </para>
             </summary>
         </member>
+        <member name="T:Pang.GeneralRepository.Core.Extensions.CoreExtension">
+            <summary>
+            核心扩展方法
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Extensions.CoreExtension.AddEntityTypes(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            批量将实体对象配置到数据库上下文中
+            </summary>
+            <param name="modelBuilder"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Extensions.CoreExtension.AddEntityTypes``1(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            批量将实体对象配置到数据库上下文中
+            </summary>
+            <param name="modelBuilder"> </param>
+            <returns> </returns>
+        </member>
         <member name="T:Pang.GeneralRepository.Core.Extensions.JsonExtension">
             <summary>
             Json扩展
@@ -202,15 +217,582 @@
             <param name="obj"> </param>
             <returns> </returns>
         </member>
+        <member name="T:Pang.GeneralRepository.Core.Helper.PagedList`1">
+            <summary>
+            分页
+            </summary>
+            <typeparam name="T"> </typeparam>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Helper.PagedList`1.CurrentPage">
+            <summary>
+            当前页
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Helper.PagedList`1.TotalPages">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Helper.PagedList`1.PageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Helper.PagedList`1.TotalCount">
+            <summary>
+            总数据数
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Helper.PagedList`1.HasPrevious">
+            <summary>
+            是否有上一页
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Helper.PagedList`1.HasNext">
+            <summary>
+            是否有下一页
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Helper.PagedList`1.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="items">      </param>
+            <param name="count">      </param>
+            <param name="pageNumber"> </param>
+            <param name="pageSize">   </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Helper.PagedList`1.CreateAsync(System.Linq.IQueryable{`0},System.Int32,System.Int32)">
+            <summary>
+            创建分页
+            </summary>
+            <param name="sourse">     </param>
+            <param name="pageNumber"> </param>
+            <param name="pageSize">   </param>
+            <returns> </returns>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Model.DtoBase">
+            <summary>
+            模型基类
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.DtoBase.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.DtoBase.CreateUserId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.DtoBase.ModifyUserId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.DtoBase.EnableMark">
+            <summary>
+            启用标识
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.DtoBase.DeleteMark">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Model.IDtoBase`1">
+            <summary>
+            模型基类接口
+            </summary>
+            <typeparam name="T"> 主键类型 </typeparam>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.IDtoBase`1.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.IDtoBase`1.CreateUserId">
+            <summary>
+            创建人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.IDtoBase`1.ModifyUserId">
+            <summary>
+            修改人Id
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.IDtoBase`1.EnableMark">
+            <summary>
+            启用标识
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.IDtoBase`1.DeleteMark">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Repository.IRepositoryBase">
+            <summary>
+            通用仓储接口初始化基类
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase.DbContext">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase.Configure``1(``0)">
+            <summary>
+            配置通用仓储
+            </summary>
+            <typeparam name="TDbContext"> </typeparam>
+            <param name="context"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase.GetDbContext">
+            <summary>
+            获取数据库上下文
+            </summary>
+            <returns> </returns>
+        </member>
         <member name="T:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1">
             <summary>
             通用仓储接口
             </summary>
         </member>
-        <member name="T:Pang.GeneralRepository.Core.Repository.RepositoryBase">
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.DbSet">
+            <summary>
+            Table
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.DbContext">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.InsertAsync(`0)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查询数据
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查询数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindPagedListAsync(System.Int32,System.Int32)">
+            <summary>
+            查询分页数据
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            查询分页数据
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.UpdateAsync(`0)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.DeleteAsync(`0)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.DeleteAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.IsExistAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.SaveChangesAsync">
+            <summary>
+            保存修改
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2">
+            <summary>
+            </summary>
+            <typeparam name="T"> </typeparam>
+            <typeparam name="TDbContext"> </typeparam>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.DbSet">
+            <summary>
+            Table
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.DbContext">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.InsertAsync(`0)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查询数据
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查询数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.FindPagedListAsync(System.Int32,System.Int32)">
+            <summary>
+            查询分页数据
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.FindPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            查询分页数据
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.UpdateAsync(`0)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.DeleteAsync(`0)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.DeleteAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.IsExistAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            是否存在
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`2.SaveChangesAsync">
+            <summary>
+            保存修改
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Repository.RepositoryBase`1">
             <summary>
             通用仓储基类
             </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.DbSet">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.DbContext">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.Configure``1(``0)">
+            <summary>
+            </summary>
+            <param name="context"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.#ctor(Pang.GeneralRepository.Core.Core.GRCDbContext)">
+            <summary>
+            </summary>
+            <param name="context"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.InsertAsync(`0)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            添加数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            查找分页数据
+            </summary>
+            <param name="query">      查找条件 </param>
+            <param name="pageNumber"> 页码 </param>
+            <param name="pageSize">   每页大小 </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindPagedListAsync(System.Int32,System.Int32)">
+            <summary>
+            查找分页数据
+            </summary>
+            <param name="pageNumber"> 页码 </param>
+            <param name="pageSize">   每页大小 </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.UpdateAsync(`0)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.DeleteAsync(`0)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.DeleteAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.IsExistAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            数据是否存在
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+            <exception cref="T:System.ArgumentNullException"> </exception>
+            <exception cref="T:System.NotImplementedException"> </exception>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.SaveChangesAsync">
+            <summary>
+            保存修改
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="T:Pang.GeneralRepository.Core.Repository.RepositoryBase`2">
+            <summary>
+            </summary>
+            <typeparam name="T"> </typeparam>
+            <typeparam name="TDbContext"> </typeparam>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.DbSet">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.DbContext">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.Configure(`1)">
+            <summary>
+            </summary>
+            <param name="context"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.#ctor(`1)">
+            <summary>
+            </summary>
+            <param name="context"> </param>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.InsertAsync(`0)">
+            <summary>
+            插入数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.InsertAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            添加数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            查找数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.FindPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            查找分页数据
+            </summary>
+            <param name="query">      查找条件 </param>
+            <param name="pageNumber"> 页码 </param>
+            <param name="pageSize">   每页大小 </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.FindPagedListAsync(System.Int32,System.Int32)">
+            <summary>
+            查找分页数据
+            </summary>
+            <param name="pageNumber"> 页码 </param>
+            <param name="pageSize">   每页大小 </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.UpdateAsync(`0)">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.UpdateAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            更新数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.DeleteAsync(`0)">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entity"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="entities"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.DeleteAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            删除数据
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.IsExistAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            数据是否存在
+            </summary>
+            <param name="query"> </param>
+            <returns> </returns>
+            <exception cref="T:System.ArgumentNullException"> </exception>
+            <exception cref="T:System.NotImplementedException"> </exception>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`2.SaveChangesAsync">
+            <summary>
+            保存修改
+            </summary>
+            <returns> </returns>
         </member>
     </members>
 </doc>

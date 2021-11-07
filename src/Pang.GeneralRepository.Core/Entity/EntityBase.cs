@@ -9,7 +9,7 @@ namespace Pang.GeneralRepository.Core.Entity
     /// <summary>
     /// 实体类基类(默认)
     /// </summary>
-    public abstract partial class EntityBase : IEntityBase<Guid>
+    public abstract class EntityBase : IEntityBase<Guid>
     {
         /// <summary>
         /// Id

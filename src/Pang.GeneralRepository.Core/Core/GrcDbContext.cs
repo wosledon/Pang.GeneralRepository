@@ -12,7 +12,7 @@ namespace Pang.GeneralRepository.Core.Core
         /// <summary>
         /// </summary>
         /// <param name="options"> </param>
-        public GRCDbContext(DbContextOptions<GRCDbContext> options) : base(options)
+        public GRCDbContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -21,7 +21,7 @@ namespace Pang.GeneralRepository.Core.Core
         /// <param name="modelBuilder"> </param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.AddEntityTypes();
+            //modelBuilder.AddEntityTypes();
 
             base.OnModelCreating(modelBuilder);
         }

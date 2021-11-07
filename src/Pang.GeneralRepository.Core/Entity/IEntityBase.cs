@@ -16,13 +16,11 @@ namespace Pang.GeneralRepository.Core.Entity
         /// <summary>
         /// 创建人Id
         /// </summary>
-        [Required]
         public T CreateUserId { get; set; }
 
         /// <summary>
         /// 修改人Id
         /// </summary>
-        [Required]
         public T ModifyUserId { get; set; }
 
         /// <summary>

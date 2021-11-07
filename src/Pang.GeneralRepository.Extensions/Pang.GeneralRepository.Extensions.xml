@@ -4,6 +4,54 @@
         <name>Pang.GeneralRepository.Extensions</name>
     </assembly>
     <members>
+        <member name="T:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension">
+            <summary>
+            对象映射扩展
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension.AddAutoMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加AutoMapper
+            <para> 在实体类以及模型中使用Attribute: [AutoMap(typeof(Model))] </para>
+            <example> [AutoMap(typeof(UserDto))] class User{} </example>
+            </summary>
+            <param name="service"> </param>
+            <returns> </returns>
+        </member>
+        <member name="T:Pang.GeneralRepository.Extensions.Core.CoreExtension">
+            <summary>
+            通用仓储核心扩展
+            </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.CoreExtension.AddGRC(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加通用仓储服务
+            </summary>
+            <param name="service"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.CoreExtension.AddGeneralRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            添加通用仓储核心服务
+            </summary>
+            <param name="services"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.CoreExtension.AddGeneralRepository``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            </summary>
+            <typeparam name="TDbContext"> </typeparam>
+            <param name="services"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.CoreExtension.UseGRCMiddleware``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            启用通用仓储中间件
+            </summary>
+            <typeparam name="TDbContext"> 数据库上下文 </typeparam>
+            <param name="app"> </param>
+            <returns> </returns>
+        </member>
         <member name="T:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension">
             <summary>
             用户登录信息扩展

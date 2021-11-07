@@ -44,7 +44,7 @@ namespace Pang.GeneralRepository.Core.Repository
     /// <summary>
     /// 通用仓储接口
     /// </summary>
-    public interface IRepositoryBase<T> : IRepositoryBase where T : class
+    public interface IRepositoryBase<T> where T : class
     {
         /// <summary>
         /// Table
@@ -54,6 +54,109 @@ namespace Pang.GeneralRepository.Core.Repository
         /// <summary>
         /// </summary>
         new GRCDbContext DbContext => IRepositoryBase.GetDbContext();
+
+        /// <summary>
+        /// 插入数据
+        /// </summary>
+        /// <param name="entity"> </param>
+        /// <returns> </returns>
+        Task InsertAsync(T entity);
+
+        /// <summary>
+        /// 插入数据
+        /// </summary>
+        /// <param name="entities"> </param>
+        /// <returns> </returns>
+        Task InsertAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <returns> </returns>
+        Task<T> FindAsync(Expression<Func<T, bool>> query);
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <param name="query"> </param>
+        /// <returns> </returns>
+        Task<IEnumerable<T>> FindListAsync(Expression<Func<T, bool>> query);
+
+        /// <summary>
+        /// 查询分页数据
+        /// </summary>
+        /// <returns> </returns>
+        Task<IEnumerable<T>> FindPagedListAsync(int pageNumber, int pageSize);
+
+        /// <summary>
+        /// 查询分页数据
+        /// </summary>
+        /// <returns> </returns>
+        Task<IEnumerable<T>> FindPagedListAsync(Expression<Func<T, bool>> query, int pageNumber, int pageSize);
+
+        /// <summary>
+        /// 更新数据
+        /// </summary>
+        /// <param name="entity"> </param>
+        /// <returns> </returns>
+        Task UpdateAsync(T entity);
+
+        /// <summary>
+        /// 更新数据
+        /// </summary>
+        /// <param name="entities"> </param>
+        /// <returns> </returns>
+        Task UpdateAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="entity"> </param>
+        /// <returns> </returns>
+        Task DeleteAsync(T entity);
+
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="entities"> </param>
+        /// <returns> </returns>
+        Task DeleteAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="query"> </param>
+        /// <returns> </returns>
+        Task DeleteAsync(Expression<Func<T, bool>> query);
+
+        /// <summary>
+        /// 是否存在
+        /// </summary>
+        /// <param name="query"> </param>
+        /// <returns> </returns>
+        Task<bool> IsExistAsync(Expression<Func<T, bool>> query);
+
+        /// <summary>
+        /// 保存修改
+        /// </summary>
+        /// <returns> </returns>
+        Task<bool> SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <typeparam name="T"> </typeparam>
+    /// <typeparam name="TDbContext"> </typeparam>
+    public interface IRepositoryBase<T, TDbContext> where T : class
+    {
+        /// <summary>
+        /// Table
+        /// </summary>
+        DbSet<T> DbSet { get; }
+
+        /// <summary>
+        /// </summary>
+        TDbContext DbContext { get; }
 
         /// <summary>
         /// 插入数据
