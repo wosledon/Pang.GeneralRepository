@@ -1,9 +1,11 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
+using Pang.GeneralRepository.Core.Repository;
 
 namespace Pang.GeneralRepository.Extensions.Core
 {
@@ -45,6 +47,7 @@ namespace Pang.GeneralRepository.Extensions.Core
         /// </summary>
         /// <param name="app"> </param>
         /// <returns> </returns>
+        [Obsolete("此方法已废除", true)]
         public static IApplicationBuilder UseLoginUserInfo<T>(this IApplicationBuilder app)
         {
             app.UseSession();

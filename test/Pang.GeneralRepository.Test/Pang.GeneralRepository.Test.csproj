@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExtensionsTest\" />
+    <Folder Include="CoreTest\" />
+  </ItemGroup>
+
 </Project>

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Extensions.Core;
 using Pang.GeneralRepository.Web.Entities;
@@ -28,6 +29,8 @@ namespace Pang.GeneralRepository.Web
         {
             services.AddControllersWithViews();
             services.AddLoginUserInfo();
+
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +46,7 @@ namespace Pang.GeneralRepository.Web
             }
             app.UseStaticFiles();
             app.UseLoginUserInfo();
+            app.UseGRCMiddleware<DbContext>();
 
             app.UseRouting();
 
