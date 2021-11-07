@@ -64,11 +64,22 @@ namespace Pang.GeneralRepository.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Create()
         {
-            var user = new User();
+            var user = new User()
+            {
+                UserItems = new List<UserItem>()
+                {
+                    new UserItem(){Name = "1"},
+                    new UserItem(){Name = "2"},
+                    new UserItem(){Name = "3"},
+                    new UserItem(){Name = "4"},
+                }
+            };
             user.Create();
 
             await _userRepositoryBase.InsertAsync(user);
-            var res = await _userRepositoryBase.SaveChangesAsync();
+            await _userRepositoryBase.SaveChangesAsync();
+
+            var res = _userRepositoryBase.FindAsync(x => x.Id.Equals(user.Id));
             return Ok(new
             {
                 Result = res,
