@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
+using Pang.GeneralRepository.Core.Helper;
 using Pang.GeneralRepository.Core.Repository;
+using Pang.GeneralRepository.Extensions.Core;
 using Pang.GeneralRepository.Extensions.RepositoryExtensions;
 using Pang.GeneralRepository.Web.Data;
+using Pang.GeneralRepository.Web.Dtos;
 using Pang.GeneralRepository.Web.Entities;
 
 namespace Pang.GeneralRepository.Web.Controllers
@@ -92,10 +95,16 @@ namespace Pang.GeneralRepository.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> GetUsers()
         {
-            var res = await _userRepositoryBase.FindPagedListAsync(x => true, 1, 2);
+            var res = await _userRepositoryBase.FindPagedListAsync(x => true, 1, 4);
+
+            //var data = await PagedList<User>.CreateAsync(_userRepositoryBase.Queryable.Include(x => x.UserItems), 1, 4);
+
+            var data = await _userRepositoryBase.Include(x=>x.UserItems).FindPagedListAsync(1, 4);
+
+            var result = data.MapTo<UserDto>();
             return Ok(new
             {
-                Result = res,
+                Result = result,
             });
         }
 
@@ -107,15 +116,9 @@ namespace Pang.GeneralRepository.Web.Controllers
                     x => x.Id.Equals(Guid.Parse("257e5f42-1787-4242-82c7-780f09248824")),
                     t => t.UserItems);
 
-            var t = await EntityFrameworkQueryableExtensions.Include(_userRepositoryBase
-                    .Queryable, t => t.UserItems).ToListAsync();
-
-            var t1 = _userRepositoryBase.Include(t => t.UserItems).ToListAsync();
-
             return Ok(new
             {
                 Result = res,
-                Data = t
             });
         }
     }

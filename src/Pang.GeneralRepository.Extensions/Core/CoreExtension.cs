@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -75,9 +76,23 @@ namespace Pang.GeneralRepository.Extensions.Core
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("GRC中间件一场");
+                    Console.WriteLine("GRC中间件异常");
                 }
             }
+
+            return app;
+        }
+
+        /// <summary>
+        /// 配置AutoMapper中间件
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseAutoMapperMiddleware(this IApplicationBuilder app)
+        {
+            var mapper = app.ApplicationServices.GetService<IMapper>();
+
+            AutoMapperExtension.Configure(mapper);
 
             return app;
         }

@@ -52,6 +52,7 @@ namespace Pang.GeneralRepository.Web
             }
             app.UseStaticFiles();
             app.UseLoginUserInfo();
+            app.UseAutoMapperMiddleware();
 
             //app.UseGRCMiddleware<SimpleDbContext>();
 

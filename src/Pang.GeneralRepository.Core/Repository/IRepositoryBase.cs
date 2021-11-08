@@ -55,7 +55,7 @@ namespace Pang.GeneralRepository.Core.Repository
 
         /// <summary>
         /// </summary>
-        new GRCDbContext DbContext => IRepositoryBase.GetDbContext();
+        GRCDbContext DbContext => IRepositoryBase.GetDbContext();
 
         /// <summary>
         /// </summary>
@@ -88,6 +88,12 @@ namespace Pang.GeneralRepository.Core.Repository
         /// <param name="include">    </param>
         /// <returns> </returns>
         Task<T> FindAsync<TModel>(Expression<Func<T, bool>> expression, Expression<Func<T, ICollection<TModel>>> include);
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<T>> FindListAsync();
 
         /// <summary>
         /// 查询数据
