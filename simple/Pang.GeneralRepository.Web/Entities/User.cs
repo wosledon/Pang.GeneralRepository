@@ -1,12 +1,13 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Pang.GeneralRepository.Core.Entity;
 using Pang.GeneralRepository.Web.Dtos;
+using AutoMapper.Configuration.Annotations;
 
 namespace Pang.GeneralRepository.Web.Entities
 {
-    [AutoMap(typeof(UserDto))]
     public class User : EntityBase
     {
         public ICollection<UserItem> UserItems { get; set; }
@@ -21,5 +22,17 @@ namespace Pang.GeneralRepository.Web.Entities
         {
             ModifyUserId = Guid.NewGuid();
         }
+    }
+
+    public class TestUser: EntityBase
+    {
+        public string Name{get; set;}
+    }
+
+    public class TestUser2: EntityBase
+    {
+        public string FirstName{get; set;}
+
+        public string LastName{get; set;}
     }
 }

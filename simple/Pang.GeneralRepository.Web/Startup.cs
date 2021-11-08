@@ -32,6 +32,7 @@ namespace Pang.GeneralRepository.Web
             services.AddLoginUserInfo();
 
             services.AddAutoMapper();
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddGeneralRepository<SimpleDbContext>();
             services.AddDbContext<SimpleDbContext>(option =>
             {

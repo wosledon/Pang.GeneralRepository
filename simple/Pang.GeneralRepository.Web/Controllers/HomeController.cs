@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pang.GeneralRepository.Web.Models;
@@ -16,6 +17,7 @@ using Pang.GeneralRepository.Extensions.RepositoryExtensions;
 using Pang.GeneralRepository.Web.Data;
 using Pang.GeneralRepository.Web.Dtos;
 using Pang.GeneralRepository.Web.Entities;
+using AutoMapper;
 
 namespace Pang.GeneralRepository.Web.Controllers
 {
@@ -24,10 +26,14 @@ namespace Pang.GeneralRepository.Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IRepositoryBase<User, SimpleDbContext> _userRepositoryBase;
 
+        private readonly IMapper _mapper;
+
         public HomeController(ILogger<HomeController> logger,
-            IRepositoryBase<User, SimpleDbContext> userRepositoryBase)
+                              IRepositoryBase<User, SimpleDbContext> userRepositoryBase,
+                              IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
             _userRepositoryBase = userRepositoryBase ?? throw new ArgumentNullException(nameof(userRepositoryBase));
         }
 
@@ -119,6 +125,33 @@ namespace Pang.GeneralRepository.Web.Controllers
             return Ok(new
             {
                 Result = res,
+            });
+        }
+
+        [HttpGet]
+        public ActionResult Map()
+        {
+            var data = new TestUser2()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "张三",
+                LastName = "1"
+            };
+
+            var Result = data.MapTo<UserDto>();
+
+            var data2 = new TestUser2()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "李四",
+                LastName = "2"
+            };
+
+            var Result2 = data2.MapTo<UserDto>();
+
+            return Ok(new{
+                Result1 = Result,
+                Result2 = Result2
             });
         }
     }
