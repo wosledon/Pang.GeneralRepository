@@ -114,7 +114,7 @@ namespace Pang.GeneralRepository.Core.Repository
         /// <summary>
         /// 查找数据
         /// </summary>
-        /// <returns> </return
+        /// <returns> </returns>
         public async Task<IEnumerable<T>> FindListAsync()
         {
             return await DbSet.ToListAsync();

@@ -74,7 +74,7 @@ namespace Pang.GeneralRepository.Extensions.Core
                     methodInfo?.Invoke(repos, new[] { dbContext });
                     //repos.Configure(dbContext);
                 }
-                catch (Exception e)
+                catch
                 {
                     Console.WriteLine("GRC中间件异常");
                 }
