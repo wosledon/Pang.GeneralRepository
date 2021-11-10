@@ -400,6 +400,12 @@
             <param name="include">    </param>
             <returns> </returns>
         </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindListAsync">
+            <summary>
+            查询数据
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.IRepositoryBase`1.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             查询数据
@@ -642,6 +648,12 @@
             查找数据
             </summary>
             <param name="query"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindListAsync">
+            <summary>
+            查找数据
+            </summary>
             <returns> </returns>
         </member>
         <member name="M:Pang.GeneralRepository.Core.Repository.RepositoryBase`1.FindListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">

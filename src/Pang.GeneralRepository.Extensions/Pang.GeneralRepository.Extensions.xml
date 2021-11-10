@@ -9,6 +9,17 @@
             对象映射扩展
             </summary>
         </member>
+        <member name="P:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension.Mapper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension.Configure(AutoMapper.IMapper)">
+            <summary>
+            配置AutoMapper中间件
+            </summary>
+            <param name="mapper"></param>
+        </member>
         <member name="M:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension.AddAutoMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             添加AutoMapper
@@ -17,6 +28,22 @@
             </summary>
             <param name="service"> </param>
             <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension.MapTo``1(System.Object)">
+            <summary>
+            映射到对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.AutoMapperExtension.MapTo``1(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            映射到对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
         </member>
         <member name="T:Pang.GeneralRepository.Extensions.Core.CoreExtension">
             <summary>
@@ -52,6 +79,13 @@
             <param name="app"> </param>
             <returns> </returns>
         </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.CoreExtension.UseAutoMapperMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            配置AutoMapper中间件
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension">
             <summary>
             用户登录信息扩展
@@ -82,6 +116,55 @@
             <summary>
             仓储的扩展方法
             </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindPagedListAsync``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查找分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindPagedListAsync``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            查找分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="expression"></param>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindPagedListAsync``1(System.Linq.IQueryable{``0})">
+            <summary>
+            查找分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindPagedListAsync``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            查找分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.Include``3(Pang.GeneralRepository.Core.Repository.IRepositoryBase{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``2}}})">
+            <summary>
+            级联查询
+            </summary>
+            <param name="repos"> </param>
+            <param name="query"> </param>
+            <typeparam name="T"> </typeparam>
+            <typeparam name="TDbContext"> </typeparam>
+            <typeparam name="TModel"> </typeparam>
+            <returns> </returns>
         </member>
     </members>
 </doc>
