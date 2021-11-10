@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
 using Pang.GeneralRepository.Core.Repository;
+using Pang.GeneralRepository.Extensions.RepositoryExtensions;
 
 namespace Pang.GeneralRepository.Extensions.Core
 {
@@ -93,6 +94,30 @@ namespace Pang.GeneralRepository.Extensions.Core
             var mapper = app.ApplicationServices.GetService<IMapper>();
 
             AutoMapperExtension.Configure(mapper);
+
+            return app;
+        }
+
+        /// <summary>
+        /// 使用快速Db操作的中间件
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseRepositoryQuickMiddleware<TDbContext>(this IApplicationBuilder app) where TDbContext : GRCDbContext
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                try
+                {
+                    var dbContext = scope.ServiceProvider.GetService<TDbContext>() as TDbContext;
+
+                    RepositoryExtension.Configure(dbContext);
+                }
+                catch
+                {
+                    Console.WriteLine("GRC中间件异常");
+                }
+            }
 
             return app;
         }

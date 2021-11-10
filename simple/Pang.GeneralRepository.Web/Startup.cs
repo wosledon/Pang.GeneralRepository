@@ -54,6 +54,7 @@ namespace Pang.GeneralRepository.Web
             app.UseStaticFiles();
             app.UseLoginUserInfo();
             app.UseAutoMapperMiddleware();
+            app.UseRepositoryQuickMiddleware<SimpleDbContext>();
 
             //app.UseGRCMiddleware<SimpleDbContext>();
 

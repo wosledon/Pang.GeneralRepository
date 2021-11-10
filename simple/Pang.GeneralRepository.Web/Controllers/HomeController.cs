@@ -87,7 +87,8 @@ namespace Pang.GeneralRepository.Web.Controllers
             };
             user.Create();
 
-            await _userRepositoryBase.InsertAsync(user);
+            //await _userRepositoryBase.InsertAsync(user);
+            await user.InsertAsync();
             await _userRepositoryBase.SaveChangesAsync();
 
             var res = await _userRepositoryBase.FindAsync(x => x.Id.Equals(user.Id));
@@ -146,6 +147,8 @@ namespace Pang.GeneralRepository.Web.Controllers
                 FirstName = "李四",
                 LastName = "2"
             };
+
+            var list = _userRepositoryBase.OrderBy(x=>x.Id);
 
             var Result2 = data2.MapTo<UserDto>();
 

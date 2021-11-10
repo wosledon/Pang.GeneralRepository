@@ -1,11 +1,13 @@
 using System.Security.Cryptography;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pang.GeneralRepository.Core.Core;
+using Pang.GeneralRepository.Core.Entity;
 using Pang.GeneralRepository.Core.Helper;
 using Pang.GeneralRepository.Core.Repository;
 
@@ -16,6 +18,17 @@ namespace Pang.GeneralRepository.Extensions.RepositoryExtensions
     /// </summary>
     public static class RepositoryExtension
     {
+        private static GRCDbContext Context { get; set; }
+
+        /// <summary>
+        /// 配置数据库上下文
+        /// </summary>
+        /// <param name="context"></param>
+        public static void Configure<TDbContext>(TDbContext context) where TDbContext : GRCDbContext
+        {
+            Context = context;
+        }
+
         /// <summary>
         /// 查找分页数据
         /// </summary>
@@ -66,6 +79,28 @@ namespace Pang.GeneralRepository.Extensions.RepositoryExtensions
             return await PagedList<T>.CreateAsync(query, pageNumber, pageSize);
         }
 
+        /// <summary>
+        /// 查找分页数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="exp"></param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<T>> FindListAsync<T>(this IQueryable<T> query, Expression<Func<T, bool>> exp)
+        {
+            return await query.Where(exp).ToListAsync();
+        }
+
+        /// <summary>
+        /// 查找分页数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<T>> FindListAsync<T>(this IQueryable<T> query)
+        {
+            return await query.ToListAsync();
+        }
 
         /// <summary>
         /// 级联查询
@@ -78,15 +113,42 @@ namespace Pang.GeneralRepository.Extensions.RepositoryExtensions
         /// <returns> </returns>
         public static IQueryable<T> Include<T, TDbContext, TModel>(this IRepositoryBase<T, TDbContext> repos, Expression<Func<T, ICollection<TModel>>> query) where T : class
         {
-           return repos.DbSet.Include(query);
+            return repos.DbSet.Include(query);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="repos"></param>
+        /// <param name="query"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <returns></returns>
+        public static IQueryable<T> Where<T, TDbContext>(this IRepositoryBase<T, TDbContext> repos,
+                                                         Expression<Func<T, bool>> query) where T : class
+        {
+            return repos.DbSet.Where(query);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="repos"></param>
+        /// <param name="query"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <returns></returns>
+        public static IQueryable<T> OrderBy<T, TDbContext, TProperty>(this IRepositoryBase<T, TDbContext> repos,
+                                                         Expression<Func<T, TProperty>> query) where T : class
+        {
+            return repos.DbSet.OrderBy(query);
         }
 
         ///// <summary>
         ///// </summary>
         ///// <param name="repos"> </param>
         ///// <param name="query"> </param>
-        ///// <typeparam name="T"> </typeparam>
-        ///// <typeparam name="TModel"> </typeparam>
         ///// <returns> </returns>
         //public static IQueryable<T> Include<T, TModel>(this IQueryable<T> repos, Expression<Func<T, ICollection<TModel>>> query) where T : class
         //{
@@ -97,12 +159,21 @@ namespace Pang.GeneralRepository.Extensions.RepositoryExtensions
         ///// </summary>
         ///// <param name="repos"> </param>
         ///// <param name="query"> </param>
-        ///// <typeparam name="T"> </typeparam>
-        ///// <typeparam name="TModel"> </typeparam>
         ///// <returns> </returns>
         //public static IQueryable<T> ThenInclude<T, TModel>(this IQueryable<T> repos, Expression<Func<T, ICollection<TModel>>> query) where T : class
         //{
         //    return repos.ThenInclude(query);
         //}
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static async Task InsertAsync<T>(this T obj) where T : class
+        {
+            await Context.Set<T>().AddAsync(obj);
+        }
     }
 }
