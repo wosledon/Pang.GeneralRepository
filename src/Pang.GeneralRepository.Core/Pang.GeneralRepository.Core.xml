@@ -331,6 +331,26 @@
             删除标识
             </summary>
         </member>
+        <member name="T:Pang.GeneralRepository.Core.Model.ReturnDto">
+            <summary>
+            返回实体
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.ReturnDto.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.ReturnDto.Message">
+            <summary>
+            返回消息
+            </summary>
+        </member>
+        <member name="P:Pang.GeneralRepository.Core.Model.ReturnDto.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
         <member name="T:Pang.GeneralRepository.Core.Repository.IRepositoryBase">
             <summary>
             通用仓储接口初始化基类

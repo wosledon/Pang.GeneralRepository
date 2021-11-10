@@ -86,6 +86,13 @@
             <param name="app"></param>
             <returns></returns>
         </member>
+        <member name="M:Pang.GeneralRepository.Extensions.Core.CoreExtension.UseRepositoryQuickMiddleware``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            使用快速Db操作的中间件
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pang.GeneralRepository.Extensions.Core.LoginUserInfoExtension">
             <summary>
             用户登录信息扩展
@@ -116,6 +123,12 @@
             <summary>
             仓储的扩展方法
             </summary>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.Configure``1(``0)">
+            <summary>
+            配置数据库上下文
+            </summary>
+            <param name="context"></param>
         </member>
         <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindPagedListAsync``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
             <summary>
@@ -155,6 +168,23 @@
             <param name="pageSize"></param>
             <returns></returns>
         </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindListAsync``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            查找分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="exp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.FindListAsync``1(System.Linq.IQueryable{``0})">
+            <summary>
+            查找分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
         <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.Include``3(Pang.GeneralRepository.Core.Repository.IRepositoryBase{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.ICollection{``2}}})">
             <summary>
             级联查询
@@ -165,6 +195,35 @@
             <typeparam name="TDbContext"> </typeparam>
             <typeparam name="TModel"> </typeparam>
             <returns> </returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.Where``2(Pang.GeneralRepository.Core.Repository.IRepositoryBase{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+             <summary>
+            
+             </summary>
+             <param name="repos"></param>
+             <param name="query"></param>
+             <typeparam name="T"></typeparam>
+             <typeparam name="TDbContext"></typeparam>
+             <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.OrderBy``3(Pang.GeneralRepository.Core.Repository.IRepositoryBase{``0,``1},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+             <summary>
+            
+             </summary>
+             <param name="repos"></param>
+             <param name="query"></param>
+             <typeparam name="T"></typeparam>
+             <typeparam name="TDbContext"></typeparam>
+             <typeparam name="TProperty"></typeparam>
+             <returns></returns>
+        </member>
+        <member name="M:Pang.GeneralRepository.Extensions.RepositoryExtensions.RepositoryExtension.InsertAsync``1(``0)">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="obj"></param>
+             <returns></returns>
         </member>
     </members>
 </doc>
