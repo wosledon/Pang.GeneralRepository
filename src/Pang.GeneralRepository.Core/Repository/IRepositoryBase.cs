@@ -1,13 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Pang.GeneralRepository.Core.Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Pang.GeneralRepository.Core.Core;
-using Pang.GeneralRepository.Core.Entity;
-using Pang.GeneralRepository.Core.Helper;
 
 namespace Pang.GeneralRepository.Core.Repository
 {
@@ -92,7 +89,7 @@ namespace Pang.GeneralRepository.Core.Repository
         /// <summary>
         /// 查询数据
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         Task<IEnumerable<T>> FindListAsync();
 
         /// <summary>

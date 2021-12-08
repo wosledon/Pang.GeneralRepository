@@ -1,8 +1,6 @@
+using Pang.GeneralRepository.Core.Core;
 using System;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Pang.GeneralRepository.Core.Core;
 
 namespace Pang.GeneralRepository.Core.Entity
 {

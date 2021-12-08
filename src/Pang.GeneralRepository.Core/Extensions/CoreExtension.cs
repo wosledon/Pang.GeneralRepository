@@ -1,7 +1,7 @@
-using System;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Pang.GeneralRepository.Core.Entity;
+using System;
+using System.Linq;
 
 namespace Pang.GeneralRepository.Core.Extensions
 {

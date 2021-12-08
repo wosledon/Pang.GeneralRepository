@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Pang.GeneralRepository.Core.Extensions;
 
 namespace Pang.GeneralRepository.Core.Core
 {

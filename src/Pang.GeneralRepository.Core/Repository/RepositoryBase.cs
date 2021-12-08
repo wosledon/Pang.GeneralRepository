@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pang.GeneralRepository.Core.Core;
 using Pang.GeneralRepository.Core.Entity;
 using Pang.GeneralRepository.Core.Helper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Pang.GeneralRepository.Core.Repository
 {

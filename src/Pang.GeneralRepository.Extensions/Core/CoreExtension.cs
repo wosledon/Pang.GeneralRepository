@@ -28,6 +28,7 @@ namespace Pang.GeneralRepository.Extensions.Core
         {
             service.AddSession();
             service.AddGeneralRepository();
+            service.AddAutoMapper();
             return service;
         }
 
@@ -87,8 +88,8 @@ namespace Pang.GeneralRepository.Extensions.Core
         /// <summary>
         /// 配置AutoMapper中间件
         /// </summary>
-        /// <param name="app"></param>
-        /// <returns></returns>
+        /// <param name="app"> </param>
+        /// <returns> </returns>
         public static IApplicationBuilder UseAutoMapperMiddleware(this IApplicationBuilder app)
         {
             var mapper = app.ApplicationServices.GetService<IMapper>();
@@ -101,8 +102,8 @@ namespace Pang.GeneralRepository.Extensions.Core
         /// <summary>
         /// 使用快速Db操作的中间件
         /// </summary>
-        /// <param name="app"></param>
-        /// <returns></returns>
+        /// <param name="app"> </param>
+        /// <returns> </returns>
         public static IApplicationBuilder UseRepositoryQuickMiddleware<TDbContext>(this IApplicationBuilder app) where TDbContext : GRCDbContext
         {
             using (var scope = app.ApplicationServices.CreateScope())
