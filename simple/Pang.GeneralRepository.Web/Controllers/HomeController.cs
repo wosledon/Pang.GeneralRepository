@@ -164,5 +164,11 @@ namespace Pang.GeneralRepository.Web.Controllers
         {
             return Ok(1);
         }
+
+        [HttpGet]
+        public ActionResult Test2()
+        {
+            return Ok(1);
+        }
     }
 }
