@@ -106,7 +106,7 @@ namespace Pang.GeneralRepository.Web.Controllers
 
             //var data = await PagedList<User>.CreateAsync(_userRepositoryBase.Queryable.Include(x => x.UserItems), 1, 4);
 
-            var data = await _userRepositoryBase.Include(x=>x.UserItems).FindPagedListAsync(1, 4);
+            var data = await _userRepositoryBase.Include(x => x.UserItems).FindPagedListAsync(1, 4);
 
             var result = data.MapTo<UserDto>();
             return Ok(new
@@ -148,14 +148,21 @@ namespace Pang.GeneralRepository.Web.Controllers
                 LastName = "2"
             };
 
-            var list = _userRepositoryBase.OrderBy(x=>x.Id);
+            var list = _userRepositoryBase.OrderBy(x => x.Id);
 
             var Result2 = data2.MapTo<UserDto>();
 
-            return Ok(new{
+            return Ok(new
+            {
                 Result1 = Result,
                 Result2 = Result2
             });
+        }
+
+        [HttpGet]
+        public ActionResult Test1()
+        {
+            return Ok(1);
         }
     }
 }
