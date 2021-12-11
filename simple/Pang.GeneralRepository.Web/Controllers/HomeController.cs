@@ -158,17 +158,5 @@ namespace Pang.GeneralRepository.Web.Controllers
                 Result2 = Result2
             });
         }
-
-        [HttpGet]
-        public ActionResult Test1()
-        {
-            return Ok(1);
-        }
-
-        [HttpGet]
-        public ActionResult Test2()
-        {
-            return Ok(1);
-        }
     }
 }
